@@ -3,9 +3,9 @@ const Navbar = () => {
     return ( 
         <>
             <header className="pb-5">
-                <nav className="navbar navbar-expand-md fixed-top">
+                <nav className="navbar navbar-expand-md bg-light fixed-top">
                     <div className="container-fluid">
-                    <a className="navbar-brand link-dark" href="#">Carousel</a>
+                    <a className="navbar-brand link-dark" href="#">RSP</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
