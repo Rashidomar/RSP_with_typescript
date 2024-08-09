@@ -1,13 +1,29 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Signup = () => {
-    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        alert("hello")
-        const form = e.target;
-        const formData = new FormData(form);
-        console.log(formData)
 
+type Values = {
+    username : string,
+    email : string,
+    password : string,
+}
+
+const Signup = () => {
+
+    const [values,setValues] = useState<Values>({
+        username : "",
+        email : "",
+        password: ""   
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        setValues({...values,[e.target.name] : e.target.value});
+ 
+    }   
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(values)
       }
 
     return ( 
@@ -31,15 +47,15 @@ const Signup = () => {
                                 </div>
                                 <h5 className="fw-normal my-3" style={{letterSpacing: "1px"}}>New Account</h5>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="text" className="form-control" />
+                                    <input type="text" onChange={handleChange} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Username</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="email" className="form-control" />
+                                    <input type="email" onChange={handleChange} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Email address</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="password" className="form-control" />
+                                    <input type="password" onChange={handleChange} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example27">Password</label>
                                 </div>
 
