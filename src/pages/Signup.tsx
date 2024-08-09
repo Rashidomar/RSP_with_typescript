@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
-type Values = {
+type userData = {
     username : string,
     email : string,
     password : string,
@@ -10,20 +10,20 @@ type Values = {
 
 const Signup = () => {
 
-    const [values,setValues] = useState<Values>({
+    const [formData,setformData] = useState<userData>({
         username : "",
         email : "",
         password: ""   
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
-        setValues({...values,[e.target.name] : e.target.value});
- 
+        setformData({...formData,[e.target.name] : e.target.value});
+
     }   
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(values)
+        console.log(formData)
       }
 
     return ( 
@@ -47,18 +47,17 @@ const Signup = () => {
                                 </div>
                                 <h5 className="fw-normal my-3" style={{letterSpacing: "1px"}}>New Account</h5>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="text" onChange={handleChange} className="form-control" />
+                                    <input type="text"name="username" onChange={handleChange} value={formData.username} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Username</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="email" onChange={handleChange} className="form-control" />
+                                    <input type="email" name="email" onChange={handleChange} value={formData.email} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Email address</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="password" onChange={handleChange} className="form-control" />
+                                    <input type="password" name="password" onChange={handleChange} value={formData.password} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example27">Password</label>
                                 </div>
-
                                 <div className="pt-1 mb-4">
                                     <button data-mdb-button-init data-mdb-ripple-init className="btn btn-dark btn-block" type="submit">Create Account</button>
                                 </div>
@@ -66,8 +65,6 @@ const Signup = () => {
                                 <a className="small text-muted" href="#!">Forgot password?</a>
                                 <p className="mb-5 pb-lg-2" style={{color: "#393f81"}}>Already have an account? <Link to={"/login"}
                                     style={{color: "#393f81"}}>login</Link></p>
-                                {/* <a href="#!" className="small text-muted">Terms of use.</a>
-                                <a href="#!" className="small text-muted">Privacy policy</a> */}
                             </form>
                             </div>
                             </div>
