@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 
 const Signup = () => {
+    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        alert("hello")
+        const form = e.target;
+        const formData = new FormData(form);
+        console.log(formData)
+
+      }
+
     return ( 
         <>
             <section style={{backgroundColor: "grey"}}>
@@ -15,27 +24,27 @@ const Signup = () => {
                             </div>
                             <div className="col-md-6 col-lg-7 d-flex align-items-center">
                             <div className="card-body p-lg-5 text-black">
-                            <form>
+                            <form method="post" onSubmit={handleSubmit}>
                                 <div className="d-flex align-items-center">
                                     <i className="fas fa-cubes fa-2x" style={{color: "#ff6219"}}></i>
                                     <span className="h1 fw-bold">Logo</span>
                                 </div>
                                 <h5 className="fw-normal my-3" style={{letterSpacing: "1px"}}>New Account</h5>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="text" id="form2Example17" className="form-control" />
+                                    <input type="text" className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Username</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="email" id="form2Example17" className="form-control" />
+                                    <input type="email" className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Email address</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <input type="password" id="form2Example27" className="form-control" />
+                                    <input type="password" className="form-control" />
                                     <label className="form-label" htmlFor="form2Example27">Password</label>
                                 </div>
 
                                 <div className="pt-1 mb-4">
-                                    <button data-mdb-button-init data-mdb-ripple-init className="btn btn-dark btn-block" type="button">Create Account</button>
+                                    <button data-mdb-button-init data-mdb-ripple-init className="btn btn-dark btn-block" type="submit">Create Account</button>
                                 </div>
 
                                 <a className="small text-muted" href="#!">Forgot password?</a>
