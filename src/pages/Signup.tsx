@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import { apiRequest } from "../apis/apiCalls";
 
 type userData = {
     username : string,
@@ -21,10 +22,15 @@ const Signup = () => {
 
     }   
 
-    const handleSubmit =async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const result = await axios.get("http://localhost:8000/users")
-        console.log(result.data)
+        try {
+            const response = await apiRequest("post", "users", formData)
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+       
       }
 
     return ( 
