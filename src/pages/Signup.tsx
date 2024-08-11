@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
 import { apiRequest } from "../apis/apiCalls";
 
 type userData = {
@@ -18,8 +17,8 @@ const Signup = () => {
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
-        setformData({...formData,[e.target.name] : e.target.value});
-
+        const {name, value} = e.target
+        setformData({...formData,[name] : value});
     }   
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
