@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { apiRequest } from "../apis/apiCalls";
+import { validator } from "../utils/Validator";
 
 type userData = {
     username : string,
@@ -8,7 +9,25 @@ type userData = {
     password : string,
 }
 
+// type errorMessage = {
+//     username : string,
+//     email : string,
+//     password : string,
+// }
+
 const Signup = () => {
+    // const [error, setError] = useState<errorMessage>({
+    //     usernameError : "",
+    //     emailError : "",
+    //     passwordError : "",
+    // })
+
+    const [error, setError] = useState({
+        usernameError : "",
+        emailError : "",
+        passwordError : "",
+    })
+
 
     const [formData,setformData] = useState<userData>({
         username : "",
@@ -24,6 +43,8 @@ const Signup = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
+            const newError = validator(formData)
+            setError(newError)
             const response = await apiRequest("post", "users", formData)
             console.log(response.data)
         } catch (error) {
@@ -55,6 +76,7 @@ const Signup = () => {
                                 <div data-mdb-input-init className="form-outline mb-4">
                                     <input type="text"name="username" onChange={handleChange} value={formData.username} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Username</label>
+                                    {error.usernameError && (<span className="error-message"> {error.usernameError}</span> )}
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
                                     <input type="email" name="email" onChange={handleChange} value={formData.email} className="form-control" />
