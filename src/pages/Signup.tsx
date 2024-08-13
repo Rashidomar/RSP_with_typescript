@@ -9,31 +9,18 @@ type userData = {
     password : string,
 }
 
-// type errorMessage = {
-//     username : string,
-//     email : string,
-//     password : string,
-// }
-
-const Signup = () => {
-    // const [error, setError] = useState<errorMessage>({
-    //     usernameError : "",
-    //     emailError : "",
-    //     passwordError : "",
-    // })
-
-    const [error, setError] = useState({
-        usernameError : "",
-        emailError : "",
-        passwordError : "",
-    })
-
+const Signup = () => { 
 
     const [formData,setformData] = useState<userData>({
         username : "",
         email : "",
         password: ""   
     });
+
+    type Errors = Partial<Record<keyof userData, string>>
+    const [error, setError] = useState<Errors>({})
+    // const [error, setError] = useState({})
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const {name, value} = e.target
@@ -44,9 +31,11 @@ const Signup = () => {
         e.preventDefault();
         try {
             const newError = validator(formData)
+            console.log(newError)
             setError(newError)
-            const response = await apiRequest("post", "users", formData)
-            console.log(response.data)
+            console.log(error)
+            // const response = await apiRequest("post", "users", formData)
+            // console.log(response.data)
         } catch (error) {
             console.log(error)
         }
@@ -74,15 +63,17 @@ const Signup = () => {
                                 </div>
                                 <h5 className="fw-normal my-3" style={{letterSpacing: "1px"}}>New Account</h5>
                                 <div data-mdb-input-init className="form-outline mb-4">
+                                    <span className="error-message">{error.username} </span>
                                     <input type="text"name="username" onChange={handleChange} value={formData.username} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Username</label>
-                                    {error.usernameError && (<span className="error-message"> {error.usernameError}</span> )}
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
+                                <span className="error-message">{error.email} </span>
                                     <input type="email" name="email" onChange={handleChange} value={formData.email} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Email address</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
+                                    <span className="error-message">{error.password} </span>
                                     <input type="password" name="password" onChange={handleChange} value={formData.password} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example27">Password</label>
                                 </div>
