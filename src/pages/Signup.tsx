@@ -19,8 +19,6 @@ const Signup = () => {
 
     type Errors = Partial<Record<keyof userData, string>>
     const [error, setError] = useState<Errors>({})
-    // const [error, setError] = useState({})
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const {name, value} = e.target
@@ -32,8 +30,8 @@ const Signup = () => {
         try {
             const newError = validator(formData)
             setError(newError)
-            // const response = await apiRequest("post", "users", formData)
-            // console.log(response.data)
+            const response = await apiRequest("post", "users", formData)
+            console.log(response.data)
         } catch (error) {
             console.log(error)
         }
