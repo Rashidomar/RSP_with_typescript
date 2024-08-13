@@ -31,9 +31,7 @@ const Signup = () => {
         e.preventDefault();
         try {
             const newError = validator(formData)
-            console.log(newError)
             setError(newError)
-            console.log(error)
             // const response = await apiRequest("post", "users", formData)
             // console.log(response.data)
         } catch (error) {
