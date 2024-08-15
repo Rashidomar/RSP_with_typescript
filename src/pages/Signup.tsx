@@ -59,17 +59,17 @@ const Signup = () => {
                                 </div>
                                 <h5 className="fw-normal my-3" style={{letterSpacing: "1px"}}>New Account</h5>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <span className="error-message">{error.username} </span>
+                                    <span className="error-message" style={{color:"red", fontSize : "15px"}}>{error.username} </span>
                                     <input type="text"name="username" onChange={handleChange} value={formData.username} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Username</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                <span className="error-message">{error.email} </span>
+                                <span className="error-message" style={{color: "red", fontSize : "15px"}} >{error.email}</span>
                                     <input type="email" name="email" onChange={handleChange} value={formData.email} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Email address</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
-                                    <span className="error-message">{error.password} </span>
+                                    <span className="error-message" style={{color: "red", fontSize : "15px"}}>{error.password} </span>
                                     <input type="password" name="password" onChange={handleChange} value={formData.password} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example27">Password</label>
                                 </div>
