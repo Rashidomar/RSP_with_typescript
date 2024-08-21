@@ -60,7 +60,7 @@ const Signup = () => {
                                 <h5 className="fw-normal my-3" style={{letterSpacing: "1px"}}>New Account</h5>
                                 <div data-mdb-input-init className="form-outline mb-4">
                                     <span className="error-message" style={{color:"red", fontSize : "15px"}}>{error.username} </span>
-                                    <input type="text"name="username" onChange={handleChange} value={formData.username} className="form-control" />
+                                    <input type="text"name="username" style={{ }} onChange={handleChange} value={formData.username} className="form-control" />
                                     <label className="form-label" htmlFor="form2Example17">Username</label>
                                 </div>
                                 <div data-mdb-input-init className="form-outline mb-4">
